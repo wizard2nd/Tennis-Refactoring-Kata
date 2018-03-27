@@ -1,15 +1,15 @@
 
 class TennisGame1
 
-  def initialize(player1Name, player2Name)
-    @player1Name = player1Name
-    @player2Name = player2Name
+  def initialize(player_1_name, player_2_name)
+    @player_1_name = player_1_name
+    @player_2_name = player_2_name
     @p1points = 0
     @p2points = 0
   end
-        
+
   def won_point(playerName)
-    if playerName == @player1Name
+    if playerName == @player_1_name
       @p1points += 1
     else
       @p2points += 1
@@ -28,13 +28,13 @@ class TennisGame1
     elsif (@p1points>=4 or @p2points>=4)
       minusResult = @p1points-@p2points
       if (minusResult==1)
-        result ="Advantage " + @player1Name
+        result ="Advantage " + @player_1_name
       elsif (minusResult ==-1)
-        result ="Advantage " + @player2Name
+        result ="Advantage " + @player_2_name
       elsif (minusResult>=2)
-        result = "Win for " + @player1Name
+        result = "Win for " + @player_1_name
       else
-        result ="Win for " + @player2Name
+        result ="Win for " + @player_2_name
       end
     else
       (1...3).each do |i|
@@ -44,6 +44,7 @@ class TennisGame1
           result+="-"
           tempScore = @p2points
         end
+
         result += {
             0 => "Love",
             1 => "Fifteen",
