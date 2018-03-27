@@ -1,5 +1,6 @@
 
 class TennisGame1
+  EQUAL_POINTS = { 0 => 'Love-All', 1 => 'Fifteen-All', 2 => 'Thirty-All' }
 
   attr_reader :p1points, :p2points, :player_1_name, :player_2_name
 
@@ -23,12 +24,8 @@ class TennisGame1
     tempScore=0
 
     if p1points == p2points
-      result = {
-          0 => "Love-All",
-          1 => "Fifteen-All",
-          2 => "Thirty-All",
-      }.fetch(@p1points, "Deuce")
-      
+      result = EQUAL_POINTS.fetch(p1points, 'Deuce')
+
     elsif (@p1points>=4 or @p2points>=4)
       minusResult = @p1points-@p2points
       if (minusResult==1)
