@@ -1,6 +1,8 @@
 
 class TennisGame1
 
+  attr_reader :p1points, :p2points, :player_1_name, :player_2_name
+
   def initialize(player_1_name, player_2_name)
     @player_1_name = player_1_name
     @player_2_name = player_2_name
@@ -19,12 +21,14 @@ class TennisGame1
   def score
     result = ""
     tempScore=0
-    if (@p1points==@p2points)
+
+    if p1points == p2points
       result = {
           0 => "Love-All",
           1 => "Fifteen-All",
           2 => "Thirty-All",
       }.fetch(@p1points, "Deuce")
+      
     elsif (@p1points>=4 or @p2points>=4)
       minusResult = @p1points-@p2points
       if (minusResult==1)
