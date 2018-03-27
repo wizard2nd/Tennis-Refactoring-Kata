@@ -1,6 +1,12 @@
 
 class TennisGame1
   EQUAL_POINTS = { 0 => 'Love-All', 1 => 'Fifteen-All', 2 => 'Thirty-All' }
+  POINTS_AS_WORDS = {
+      0 => "Love",
+      1 => "Fifteen",
+      2 => "Thirty",
+      3 => "Forty",
+  }
 
   attr_reader :p1points, :p2points, :player_1_name, :player_2_name
 
@@ -21,7 +27,7 @@ class TennisGame1
   
   def score
     result = ""
-    tempScore=0
+    tempScore = 0
 
     if p1points == p2points
       result = EQUAL_POINTS.fetch(p1points, 'Deuce')
@@ -46,12 +52,7 @@ class TennisGame1
           tempScore = @p2points
         end
 
-        result += {
-            0 => "Love",
-            1 => "Fifteen",
-            2 => "Thirty",
-            3 => "Forty",
-        }[tempScore]
+        result += POINTS_AS_WORDS[tempScore]
       end
     end
     result
