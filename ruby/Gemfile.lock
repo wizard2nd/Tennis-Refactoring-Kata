@@ -1,13 +1,21 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    docile (1.1.5)
+    json (2.1.0)
+    simplecov (0.15.1)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     test-unit (2.5.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  simplecov
   test-unit
 
 BUNDLED WITH
-   1.10.6
+   1.16.0
