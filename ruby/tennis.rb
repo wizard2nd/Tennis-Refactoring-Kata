@@ -44,16 +44,21 @@ class TennisGame1
         result ="Win for " + @player_2_name
       end
     else
-      (1...3).each do |i|
-        if (i==1)
-          tempScore = @p1points
-        else
-          result+="-"
-          tempScore = @p2points
-        end
+      result = score_when_points_are_not_equal(result)
+    end
+    result
+  end
 
-        result += POINTS_AS_WORDS[tempScore]
+  def score_when_points_are_not_equal(result)
+    (1...3).each do |i|
+      if (i==1)
+        tempScore = @p1points
+      else
+        result    +="-"
+        tempScore = @p2points
       end
+
+      result += POINTS_AS_WORDS[tempScore]
     end
     result
   end
