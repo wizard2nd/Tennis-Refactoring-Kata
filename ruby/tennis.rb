@@ -50,16 +50,7 @@ class TennisGame1
   end
 
   def score_when_points_are_not_equal(result)
-    (1...3).each do |i|
-      if (i==1)
-        tempScore = @p1points
-      else
-        result    +="-"
-        tempScore = @p2points
-      end
-
-      result += POINTS_AS_WORDS[tempScore]
-    end
+    result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}"
     result
   end
 end
