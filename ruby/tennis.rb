@@ -26,9 +26,6 @@ class TennisGame1
   end
   
   def score
-    result = ""
-    tempScore = 0
-
     if p1points == p2points
       result = EQUAL_POINTS.fetch(p1points, 'Deuce')
 
