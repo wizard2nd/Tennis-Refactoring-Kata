@@ -44,13 +44,8 @@ class TennisGame1
         result ="Win for " + @player_2_name
       end
     else
-      result = score_when_points_are_not_equal(result)
+      result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}"
     end
-    result
-  end
-
-  def score_when_points_are_not_equal(result)
-    result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}"
     result
   end
 end
