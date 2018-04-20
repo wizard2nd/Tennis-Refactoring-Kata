@@ -28,18 +28,19 @@ class TennisGame1
   def score
     if p1points == p2points
       result = EQUAL_POINTS.fetch(p1points, 'Deuce')
+    elsif p1points >= 4 || p2points >= 4 # 4:3, 5:4, 4:2
 
-    elsif (@p1points>=4 or @p2points>=4)
-      minusResult = @p1points-@p2points
-      if (minusResult==1)
-        result ="Advantage " + @player_1_name
-      elsif (minusResult ==-1)
-        result ="Advantage " + @player_2_name
-      elsif (minusResult>=2)
-        result = "Win for " + @player_1_name
-      else
-        result ="Win for " + @player_2_name
-      end
+      lead = p1points - p2points
+
+      result = if lead == 1
+                 "Advantage #{@player_1_name}"
+               elsif (lead == -1)
+                 "Advantage #{@player_2_name}"
+               elsif (lead >= 2)
+                 "Win for " + @player_1_name
+               else
+                 "Win for " + @player_2_name
+               end
     else
       result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}"
     end
