@@ -26,15 +26,10 @@ class TennisGame1
   end
   
   def score
-    if p1points == p2points
-      result = EQUAL_POINTS.fetch(p1points, 'Deuce')
-    elsif p1points >= 4 || p2points >= 4 # 4:3, 5:4, 4:2
-      lead = p1points - p2points
-      result = game_state(lead)
-    else
-      result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}"
-    end
-    result
+    return EQUAL_POINTS.fetch(p1points, 'Deuce') if p1points == p2points
+    lead = p1points - p2points
+    return game_state(lead) if p1points >= 4 || p2points >= 4
+    "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}"
   end
 
   def game_state(lead)
