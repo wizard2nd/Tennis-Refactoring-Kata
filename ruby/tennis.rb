@@ -94,10 +94,8 @@ class TennisGame2
                end
       return "#{result}-All"
     end
-    
-    if (@p1points==@p2points and @p1points>2)
-        result = "Deuce"
-    end
+
+    return 'Deuce' if deuce?
     
     p1res = ""
     p2res = ""
@@ -172,6 +170,10 @@ class TennisGame2
       result = "Win for " + player2_name
     end
     result
+  end
+
+  def deuce?
+    @p1points == @p2points && @p1points > 2
   end
 
   def equal_score
