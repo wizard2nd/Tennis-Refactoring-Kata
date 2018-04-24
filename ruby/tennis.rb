@@ -37,10 +37,6 @@ class TennisGame1
     p1points == p2points && p1points >= 3
   end
 
-  def equal_but_not_deuce?
-    p1points == p2points
-  end
-
   def win_or_advantage?
     p1points >= 4 || p2points >= 4
   end
