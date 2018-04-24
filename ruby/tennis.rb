@@ -27,9 +27,17 @@ class TennisGame1
   
   def score
     return 'Deuce' if deuce?
-    return EQUAL_POINTS[p1points] if p1points == p2points
+    return equal_score if p1points == p2points
     lead = p1points - p2points
     return game_state(lead) if win_or_advantage?
+    unequal_score
+  end
+
+  def equal_score
+    EQUAL_POINTS[p1points]
+  end
+
+  def unequal_score
     "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}"
   end
 
