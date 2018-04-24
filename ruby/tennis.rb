@@ -1,3 +1,4 @@
+require 'byebug'
 
 class TennisGame1
   EQUAL_POINTS = { 0 => 'Love-All', 1 => 'Fifteen-All', 2 => 'Thirty-All' }
@@ -63,15 +64,18 @@ class TennisGame1
 end
 
 class TennisGame2
+
+  attr_reader :player1_name, :player2_name
+
   def initialize(player1Name, player2Name)
-    @player1Name = player1Name
-    @player2Name = player2Name
+    @player1_name = player1Name
+    @player2_name = player2Name
     @p1points = 0
     @p2points = 0
   end
       
   def won_point(playerName)
-    if playerName == @player1Name
+    if playerName == player1_name
       p1Score()
     else
       p2Score()
@@ -79,19 +83,18 @@ class TennisGame2
   end
 
   def score
-    result = ""
-    if (@p1points == @p2points and @p1points < 3)
-      if (@p1points==0)
-        result = "Love"
-      end
-      if (@p1points==1)
-        result = "Fifteen"
-      end
-      if (@p1points==2)
-        result = "Thirty"
-      end
-      result += "-All"
+    if equal_score
+      result = case @p1points
+               when 0
+                 'Love'
+               when 1
+                 'Fifteen'
+               when 2
+                 'Thirty'
+               end
+      return "#{result}-All"
     end
+    
     if (@p1points==@p2points and @p1points>2)
         result = "Deuce"
     end
@@ -157,18 +160,22 @@ class TennisGame2
       result = p1res + "-" + p2res
     end
     if (@p1points > @p2points and @p2points >= 3)
-      result = "Advantage " + @player1Name
+      result = "Advantage " + player1_name
     end
     if (@p2points > @p1points and @p1points >= 3)
-      result = "Advantage " + @player2Name
+      result = "Advantage " + player2_name
     end
     if (@p1points>=4 and @p2points>=0 and (@p1points-@p2points)>=2)
-      result = "Win for " + @player1Name
+      result = "Win for " + player1_name
     end
     if (@p2points>=4 and @p1points>=0 and (@p2points-@p1points)>=2)
-      result = "Win for " + @player2Name
+      result = "Win for " + player2_name
     end
     result
+  end
+
+  def equal_score
+    @p1points == @p2points && @p1points < 3
   end
 
   def setp1Score(number)

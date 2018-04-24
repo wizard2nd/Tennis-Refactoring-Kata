@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    byebug (10.0.0)
     docile (1.1.5)
     json (2.1.0)
     simplecov (0.15.1)
@@ -14,6 +15,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   simplecov
   test-unit
 
