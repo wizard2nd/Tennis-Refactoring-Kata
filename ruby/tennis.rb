@@ -24,12 +24,11 @@ class TennisGame1
       @p2points += 1
     end
   end
-  
+
   def score
     return 'Deuce' if deuce?
     return equal_score if p1points == p2points
-    lead = p1points - p2points
-    return game_state(lead) if win_or_advantage?
+    return win_or_advantage if win_or_advantage?
     unequal_score
   end
 
@@ -49,7 +48,8 @@ class TennisGame1
     p1points >= 4 || p2points >= 4
   end
 
-  def game_state(lead)
+  def win_or_advantage
+    lead = p1points - p2points
     if lead == 1
       "Advantage #{player_1_name}"
     elsif lead == -1
