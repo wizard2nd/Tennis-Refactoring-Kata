@@ -11,3 +11,7 @@ csharp/*.suo
 *.swp
 .DS_Store
 csharp/.vs
+ruby/.idea/misc.xml
+ruby/.idea/modules.xml
+ruby/.idea/ruby.iml
+ruby/.idea/workspace.xml
