@@ -1,8 +1,7 @@
 require 'byebug'
 
 class TennisGame1
-  EQUAL_POINTS = { 0 => 'Love-All', 1 => 'Fifteen-All', 2 => 'Thirty-All' }
-  POINTS_AS_WORDS = {
+  POINTS_TO_WORDS = {
       0 => "Love",
       1 => "Fifteen",
       2 => "Thirty",
@@ -30,15 +29,11 @@ class TennisGame1
     return 'Deuce' if deuce?
     return equal_score if p1points == p2points
     return win_or_advantage if win_or_advantage?
-    unequal_score
+    "#{POINTS_TO_WORDS[p1points]}-#{POINTS_TO_WORDS[p2points]}"
   end
 
   def equal_score
-    EQUAL_POINTS[p1points]
-  end
-
-  def unequal_score
-    "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}"
+    "#{POINTS_TO_WORDS[p1points]}-All"
   end
 
   def deuce?
@@ -52,14 +47,22 @@ class TennisGame1
   def win_or_advantage
     lead = p1points - p2points
     if lead == 1
-      "Advantage #{player_1_name}"
+      advantage(player_1_name)
     elsif lead == -1
-      "Advantage #{player_2_name}"
+      advantage(player_2_name)
     elsif lead >= 2
-      "Win for #{player_1_name}"
+      wins(player_1_name)
     else
-      "Win for #{player_2_name}"
+      wins(player_2_name)
     end
+  end
+
+  def wins(player_name)
+    "Win for #{player_name}"
+  end
+
+  def advantage(player_name)
+    "Advantage #{player_name}"
   end
 end
 
@@ -96,22 +99,25 @@ class TennisGame2
     end
 
     return 'Deuce' if deuce?
-    
-    p1res = ""
+
     p2res = ""
-    if (@p1points > 0 and @p2points==0)
-      if (@p1points==1)
-        p1res = "Fifteen"
-      end
-      if (@p1points==2)
-        p1res = "Thirty"
-      end
-      if (@p1points==3)
-        p1res = "Forty"
-      end
+    if player_one_leads?
+
+      p1res = case @p1points
+              when 1
+                'Fifteen'
+              when 2
+                'Thirty'
+              when 3
+                'Forty'
+              else
+                ''
+              end
+
       p2res = "Love"
-      result = p1res + "-" + p2res
+      result = "#{p1res}-Love"
     end
+
     if (@p2points > 0 and @p1points==0)
       if (@p2points==1)
         p2res = "Fifteen"
@@ -170,6 +176,10 @@ class TennisGame2
       result = "Win for " + player2_name
     end
     result
+  end
+
+  def player_one_leads?
+    @p1points > 0 && @p2points == 0
   end
 
   def deuce?
