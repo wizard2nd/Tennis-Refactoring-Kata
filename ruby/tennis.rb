@@ -12,6 +12,10 @@ class Player
     @points += points
   end
 
+  def lead_by_one_against(other_player)
+    points - other_player.points == 1
+  end
+
 end
 
 class TennisGame1
@@ -70,7 +74,7 @@ class TennisGame1
 
   def win_or_advantage
     lead = player_1.points - player_2.points
-    if lead == 1
+    if player_1.lead_by_one_against player_2
       advantage(player_1.name)
     elsif lead == -1
       advantage(player_2.name)
