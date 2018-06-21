@@ -20,6 +20,10 @@ class Player
     points - other_player.points >= 2
   end
 
+  def in_advantage_against?(other_player)
+    (points >= 3 || other_player.points >= 3) && lead_by_one_against(other_player)
+  end
+
   def advantage
     "Advantage #{name}"
   end
@@ -85,9 +89,9 @@ class TennisGame1
   end
 
   def win_or_advantage
-    if player_1.lead_by_one_against player_2
+    if player_1.in_advantage_against?(player_2)
       player_1.advantage
-    elsif player_2.lead_by_one_against player_1
+    elsif player_2.in_advantage_against?(player_1)
       player_2.advantage
     elsif player_1.lead_by_two_against player_2
       player_1.wins
