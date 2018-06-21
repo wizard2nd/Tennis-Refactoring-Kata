@@ -7,7 +7,11 @@ class Player
     @name = name
     @points = points
   end
-  
+
+  def add(points:)
+    self.points + points
+  end
+
 end
 
 class TennisGame1
@@ -18,20 +22,23 @@ class TennisGame1
       3 => "Forty",
   }
 
-  attr_reader :player_1_points, :player_1_name, :player_2_points, :player_2_name
+  attr_reader :player_1_points, :player_1_name, :player_2_points, :player_2_name, :player_1, :player_2
 
   def initialize(player_1_name, player_2_name)
+    @player_1 = Player.new(name: player_1_name)
     @player_1_name = player_1_name
     @player_1_points = 0
+
+    @player_2 = Player.new(name: player_2_name)
     @player_2_name = player_2_name
     @player_2_points = 0
   end
 
   def won_point(player_name)
     case player_name
-    when player_1_name
+    when player_1.name
       @player_1_points += 1
-    when player_2_name
+    when player_2.name
       @player_2_points += 1
     end
   end
