@@ -61,7 +61,7 @@ class TennisGame1
   end
 
   def deuce?
-    player_1_points == player_2_points && player_1_points >= 3
+    player_1.points == player_2.points && player_1.points >= 3
   end
 
   def win_or_advantage?
