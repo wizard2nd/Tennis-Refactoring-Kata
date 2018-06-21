@@ -65,12 +65,8 @@ class TennisGame1
   end
 
   def won_point(player_name)
-    case player_name
-    when player1.name
-      player1.add points: 1
-    when player2.name
-      player2.add points: 1
-    end
+    player1.add points: 1 if player1.name.eql? player_name
+    player2.add points: 1 if player2.name.eql? player_name
   end
 
   def score
