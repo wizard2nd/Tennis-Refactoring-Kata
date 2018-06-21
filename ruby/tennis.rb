@@ -21,7 +21,7 @@ class Player
   end
 
   def in_advantage_against?(other_player)
-    (points >= 3 || other_player.points >= 3) && lead_by_one_against(other_player)
+    (points >= 4 || other_player.points >= 4) && lead_by_one_against(other_player)
   end
 
   def wins_against?(other_player)
@@ -76,6 +76,10 @@ class TennisGame1
   def score
     return 'Deuce' if deuce?
     return equal_score if player_1.points == player_2.points
+    return player_1.advantage if player_1.in_advantage_against?(player_2)
+    return player_1.wins if player_1.wins_against?(player_2)
+    return player_2.advantage if player_2.in_advantage_against?(player_1)
+    return player_2.wins if player_2.wins_against?(player_1)
     return win_or_advantage if win_or_advantage?
     "#{POINTS_TO_WORDS[player_1.points]}-#{POINTS_TO_WORDS[player_2.points]}"
   end
@@ -94,11 +98,9 @@ class TennisGame1
 
   def win_or_advantage
     return player_1.advantage if player_1.in_advantage_against?(player_2)
-
-    return player_2.advantage if player_2.in_advantage_against?(player_1)
-
     return player_1.wins if player_1.wins_against?(player_2)
 
+    return player_2.advantage if player_2.in_advantage_against?(player_1)
     return player_2.wins if player_2.wins_against?(player_1)
   end
 end
