@@ -49,35 +49,35 @@ class TennisGame1
       3 => "Forty",
   }
 
-  attr_reader :player_1, :player_2
+  attr_reader :player1, :player2
 
-  def initialize(player_1_name, player_2_name)
-    @player_1 = Player.new(name: player_1_name)
-    @player_2 = Player.new(name: player_2_name)
+  def initialize(player1_name, player2_name)
+    @player1 = Player.new(name: player1_name)
+    @player2 = Player.new(name: player2_name)
   end
 
   def won_point(player_name)
     case player_name
-    when player_1.name
-      player_1.add points: 1
-    when player_2.name
-      player_2.add points: 1
+    when player1.name
+      player1.add points: 1
+    when player2.name
+      player2.add points: 1
     end
   end
 
   def score
     return 'Deuce' if deuce?
-    return "#{POINTS_TO_WORDS[player_1.points]}-All" if player_1.points == player_2.points
-    return player_1.advantage if player_1.in_advantage_against?(player_2)
-    return player_1.wins if player_1.wins_against?(player_2)
-    return player_2.advantage if player_2.in_advantage_against?(player_1)
-    return player_2.wins if player_2.wins_against?(player_1)
+    return "#{POINTS_TO_WORDS[player1.points]}-All" if player1.points == player2.points
+    return player1.advantage if player1.in_advantage_against?(player2)
+    return player1.wins if player1.wins_against?(player2)
+    return player2.advantage if player2.in_advantage_against?(player1)
+    return player2.wins if player2.wins_against?(player1)
 
-    "#{POINTS_TO_WORDS[player_1.points]}-#{POINTS_TO_WORDS[player_2.points]}"
+    "#{POINTS_TO_WORDS[player1.points]}-#{POINTS_TO_WORDS[player2.points]}"
   end
 
   def deuce?
-    player_1.points == player_2.points && player_1.points >= 3
+    player1.points == player2.points && player1.points >= 3
   end
 end
 
