@@ -8,7 +8,7 @@ class TennisGame1
       3 => "Forty",
   }
 
-  attr_reader :player_1_points, :player_2_points, :player_1_name, :player_2_name
+  attr_reader :player_1_points, :player_1_name, :player_2_points, :player_2_name
 
   def initialize(player_1_name, player_2_name)
     @player_1_name = player_1_name
@@ -17,10 +17,11 @@ class TennisGame1
     @player_2_points = 0
   end
 
-  def won_point(playerName)
-    if playerName == @player_1_name
+  def won_point(player_name)
+    case player_name
+    when player_1_name
       @player_1_points += 1
-    else
+    when player_2_name
       @player_2_points += 1
     end
   end
