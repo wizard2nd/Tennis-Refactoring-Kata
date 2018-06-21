@@ -32,6 +32,10 @@ class Player
     (points >= 4 || other_player.points >= 4)
   end
 
+  def equal_to(other_player)
+    points == other_player.points
+  end
+
   def advantage
     "Advantage #{name}"
   end
@@ -71,7 +75,7 @@ class TennisGame1
 
   def score
     return 'Deuce' if deuce?
-    return "#{POINTS_TO_WORDS[player1.points]}-All" if player1.points == player2.points
+    return "#{POINTS_TO_WORDS[player1.points]}-All" if player1.equal_to player2
     return player1.advantage if player1.in_advantage_against?(player2)
     return player1.wins if player1.wins_against?(player2)
     return player2.advantage if player2.in_advantage_against?(player1)
