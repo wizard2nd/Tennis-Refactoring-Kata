@@ -65,7 +65,7 @@ class TennisGame1
   end
 
   def win_or_advantage?
-    player_1_points >= 4 || player_2_points >= 4
+    player_1.points >= 4 || player_2.points >= 4
   end
 
   def win_or_advantage
