@@ -50,7 +50,7 @@ class TennisGame1
 
   extend Forwardable
 
-  POINTS_TO_WORDS = {
+  POINTS_AS_WORDS = {
       0 => "Love",
       1 => "Fifteen",
       2 => "Thirty",
@@ -75,17 +75,21 @@ class TennisGame1
 
   def score
     return 'Deuce' if deuce?
-    return "#{POINTS_TO_WORDS[player1.points]}-All" if player1.equal_to player2
+    return "#{points_of(player1)}-All" if player1.equal_to player2
     return player1.advantage if player1.in_advantage_against?(player2)
     return player1.wins if player1.wins_against?(player2)
     return player2.advantage if player2.in_advantage_against?(player1)
     return player2.wins if player2.wins_against?(player1)
 
-    "#{POINTS_TO_WORDS[player1.points]}-#{POINTS_TO_WORDS[player2.points]}"
+    "#{points_of(player1)}-#{points_of(player2)}"
   end
 
   def deuce?
     player1.points == player2.points && player1.points >= 3
+  end
+
+  def points_of(player)
+    POINTS_AS_WORDS[player.points]
   end
 end
 
