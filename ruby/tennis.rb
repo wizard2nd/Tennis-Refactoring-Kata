@@ -9,12 +9,15 @@ class Player
   end
 
   def add(points:)
-    self.points + points
+    @points += points
   end
 
 end
 
 class TennisGame1
+
+  extend Forwardable
+
   POINTS_TO_WORDS = {
       0 => "Love",
       1 => "Fifteen",
@@ -23,6 +26,9 @@ class TennisGame1
   }
 
   attr_reader :player_1_points, :player_1_name, :player_2_points, :player_2_name, :player_1, :player_2
+
+  def_delegator :player_1, :points, :player_1_points
+  def_delegator :player_2, :points, :player_2_points
 
   def initialize(player_1_name, player_2_name)
     @player_1 = Player.new(name: player_1_name)
@@ -37,9 +43,9 @@ class TennisGame1
   def won_point(player_name)
     case player_name
     when player_1.name
-      @player_1_points += 1
+      player_1.add points: 1
     when player_2.name
-      @player_2_points += 1
+      player_2.add points: 1
     end
   end
 
