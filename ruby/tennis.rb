@@ -49,19 +49,11 @@ class TennisGame1
       3 => "Forty",
   }
 
-  attr_reader :player_1_points, :player_1_name, :player_2_points, :player_2_name, :player_1, :player_2
-
-  def_delegator :player_1, :points, :player_1_points
-  def_delegator :player_2, :points, :player_2_points
+  attr_reader :player_1, :player_2
 
   def initialize(player_1_name, player_2_name)
     @player_1 = Player.new(name: player_1_name)
-    @player_1_name = player_1_name
-    @player_1_points = 0
-
     @player_2 = Player.new(name: player_2_name)
-    @player_2_name = player_2_name
-    @player_2_points = 0
   end
 
   def won_point(player_name)
@@ -80,7 +72,7 @@ class TennisGame1
     return player_1.wins if player_1.wins_against?(player_2)
     return player_2.advantage if player_2.in_advantage_against?(player_1)
     return player_2.wins if player_2.wins_against?(player_1)
-    return win_or_advantage if win_or_advantage?
+
     "#{POINTS_TO_WORDS[player_1.points]}-#{POINTS_TO_WORDS[player_2.points]}"
   end
 
@@ -90,18 +82,6 @@ class TennisGame1
 
   def deuce?
     player_1.points == player_2.points && player_1.points >= 3
-  end
-
-  def win_or_advantage?
-    player_1.points >= 4 || player_2.points >= 4
-  end
-
-  def win_or_advantage
-    return player_1.advantage if player_1.in_advantage_against?(player_2)
-    return player_1.wins if player_1.wins_against?(player_2)
-
-    return player_2.advantage if player_2.in_advantage_against?(player_1)
-    return player_2.wins if player_2.wins_against?(player_1)
   end
 end
 
