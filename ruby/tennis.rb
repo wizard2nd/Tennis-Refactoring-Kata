@@ -1,5 +1,15 @@
 require 'byebug'
 
+class Player
+  attr_reader :name, :points
+
+  def initialize(name:, points: 0)
+    @name = name
+    @points = points
+  end
+  
+end
+
 class TennisGame1
   POINTS_TO_WORDS = {
       0 => "Love",
