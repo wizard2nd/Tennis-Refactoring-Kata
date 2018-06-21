@@ -57,7 +57,7 @@ class TennisGame1
   end
 
   def equal_score
-    "#{POINTS_TO_WORDS[player_1_points]}-All"
+    "#{POINTS_TO_WORDS[player_1.points]}-All"
   end
 
   def deuce?
