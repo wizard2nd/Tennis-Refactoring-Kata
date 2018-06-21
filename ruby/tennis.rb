@@ -8,28 +8,28 @@ class TennisGame1
       3 => "Forty",
   }
 
-  attr_reader :player_1_points, :p2points, :player_1_name, :player_2_name
+  attr_reader :player_1_points, :player_2_points, :player_1_name, :player_2_name
 
   def initialize(player_1_name, player_2_name)
     @player_1_name = player_1_name
     @player_1_points = 0
     @player_2_name = player_2_name
-    @p2points = 0
+    @player_2_points = 0
   end
 
   def won_point(playerName)
     if playerName == @player_1_name
       @player_1_points += 1
     else
-      @p2points += 1
+      @player_2_points += 1
     end
   end
 
   def score
     return 'Deuce' if deuce?
-    return equal_score if player_1_points == p2points
+    return equal_score if player_1_points == player_2_points
     return win_or_advantage if win_or_advantage?
-    "#{POINTS_TO_WORDS[player_1_points]}-#{POINTS_TO_WORDS[p2points]}"
+    "#{POINTS_TO_WORDS[player_1_points]}-#{POINTS_TO_WORDS[player_2_points]}"
   end
 
   def equal_score
@@ -37,15 +37,15 @@ class TennisGame1
   end
 
   def deuce?
-    player_1_points == p2points && player_1_points >= 3
+    player_1_points == player_2_points && player_1_points >= 3
   end
 
   def win_or_advantage?
-    player_1_points >= 4 || p2points >= 4
+    player_1_points >= 4 || player_2_points >= 4
   end
 
   def win_or_advantage
-    lead = player_1_points - p2points
+    lead = player_1_points - player_2_points
     if lead == 1
       advantage(player_1_name)
     elsif lead == -1
