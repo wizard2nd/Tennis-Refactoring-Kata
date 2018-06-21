@@ -69,15 +69,15 @@ class TennisGame1
   end
 
   def win_or_advantage
-    lead = player_1_points - player_2_points
+    lead = player_1.points - player_2.points
     if lead == 1
-      advantage(player_1_name)
+      advantage(player_1.name)
     elsif lead == -1
-      advantage(player_2_name)
+      advantage(player_2.name)
     elsif lead >= 2
-      wins(player_1_name)
+      wins(player_1.name)
     else
-      wins(player_2_name)
+      wins(player_2.name)
     end
   end
 
