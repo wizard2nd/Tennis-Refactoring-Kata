@@ -21,11 +21,15 @@ class Player
   end
 
   def in_advantage_against?(other_player)
-    (points >= 4 || other_player.points >= 4) && lead_by_one_against(other_player)
+    win_or_advantage_against?(other_player) && lead_by_one_against(other_player)
   end
 
   def wins_against?(other_player)
-    (points >= 4 || other_player.points >= 4) && lead_by_two_against(other_player)
+    win_or_advantage_against?(other_player) && lead_by_two_against(other_player)
+  end
+
+  def win_or_advantage_against?(other_player)
+    (points >= 4 || other_player.points >= 4)
   end
 
   def advantage
