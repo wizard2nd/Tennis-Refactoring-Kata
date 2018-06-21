@@ -101,14 +101,6 @@ class TennisGame1
 
     return player_2.wins if player_2.wins_against?(player_1)
   end
-
-  def wins(player_name)
-    "Win for #{player_name}"
-  end
-
-  def advantage(player_name)
-    "Advantage #{player_name}"
-  end
 end
 
 class TennisGame2
