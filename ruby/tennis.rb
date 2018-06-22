@@ -20,8 +20,8 @@ class Player
     points >= 4 && lead_over(other_player) >= 2
   end
 
-  def equal_to(other_player)
-    points == other_player.points
+  def points_same_as(other_player)
+    lead_over(other_player).zero?
   end
 
   def advantage
@@ -64,7 +64,7 @@ class TennisGame1
 
   def score
     return 'Deuce' if deuce?
-    return "#{points_of(player1)}-All" if player1.equal_to player2
+    return "#{points_of(player1)}-All" if player1.points_same_as player2
     return player1.advantage if player1.in_advantage_against?(player2)
     return player1.wins if player1.wins_against?(player2)
     return player2.advantage if player2.in_advantage_against?(player1)
