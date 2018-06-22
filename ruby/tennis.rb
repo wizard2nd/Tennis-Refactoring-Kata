@@ -12,20 +12,12 @@ class Player
     @points += points
   end
 
-  def lead_by_one_against(other_player)
-    points - other_player.points == 1
-  end
-
-  def lead_by_two_against(other_player)
-    points - other_player.points >= 2
-  end
-
   def in_advantage_against?(other_player)
-    points >= 4 && lead_by_one_against(other_player)
+    points >= 4 && lead_over(other_player) == 1
   end
 
   def wins_against?(other_player)
-    points >= 4 && lead_by_two_against(other_player)
+    points >= 4 && lead_over(other_player) >= 2
   end
 
   def equal_to(other_player)
@@ -40,6 +32,11 @@ class Player
     "Win for #{name}"
   end
 
+  private
+
+  def lead_over(other_player)
+    points - other_player.points
+  end
 end
 
 class TennisGame1
