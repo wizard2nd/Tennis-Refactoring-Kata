@@ -104,10 +104,8 @@ class TennisGame2
   end
 
   def score
-    if equal_score
-      result = POINTS_AS_WORDS[@p1points]
-      return "#{result}-All"
-    end
+
+    return "#{POINTS_AS_WORDS[@p1points]}-All" if equal_score
 
     return 'Deuce' if deuce?
 
