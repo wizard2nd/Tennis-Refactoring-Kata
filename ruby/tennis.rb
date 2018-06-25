@@ -117,15 +117,7 @@ class TennisGame2
     end
 
     if (@p2points > 0 and @p1points==0)
-      if (@p2points==1)
-        p2res = "Fifteen"
-      end
-      if (@p2points==2)
-        p2res = "Thirty"
-      end
-      if (@p2points==3)
-        p2res = "Forty"
-      end
+      p2res = POINTS_AS_WORDS.fetch(@p2points, '')
       
       p1res = "Love"
       result = p1res + "-" + p2res
