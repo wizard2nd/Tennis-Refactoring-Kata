@@ -86,7 +86,7 @@ class TennisGame2
 
   attr_reader :player1_name, :player2_name
 
-  POINTS_AS_WORDS = { 0 => 'Love', 1 => 'Fifteen', 2 => 'Thirty' }
+  POINTS_AS_WORDS = { 0 => 'Love', 1 => 'Fifteen', 2 => 'Thirty', 3 => 'Forty' }
 
   def initialize(player1Name, player2Name)
     @player1_name = player1Name
@@ -111,18 +111,7 @@ class TennisGame2
 
     p2res = ""
     if player_one_leads?
-
-      p1res = case @p1points
-              when 1
-                'Fifteen'
-              when 2
-                'Thirty'
-              when 3
-                'Forty'
-              else
-                ''
-              end
-
+      p1res = POINTS_AS_WORDS.fetch(@p1points, '')
       p2res = "Love"
       result = "#{p1res}-Love"
     end
