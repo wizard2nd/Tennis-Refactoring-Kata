@@ -86,6 +86,8 @@ class TennisGame2
 
   attr_reader :player1_name, :player2_name
 
+  POINTS_AS_WORDS = { 0 => 'Love', 1 => 'Fifteen', 2 => 'Thirty' }
+
   def initialize(player1Name, player2Name)
     @player1_name = player1Name
     @player2_name = player2Name
@@ -103,14 +105,7 @@ class TennisGame2
 
   def score
     if equal_score
-      result = case @p1points
-               when 0
-                 'Love'
-               when 1
-                 'Fifteen'
-               when 2
-                 'Thirty'
-               end
+      result = POINTS_AS_WORDS[@p1points]
       return "#{result}-All"
     end
 
