@@ -123,10 +123,7 @@ class TennisGame2
     end
     
     if (@p1points>@p2points and @p1points < 4)
-      p1res = POINTS_AS_WORDS[@p1points]
-      p2res = POINTS_AS_WORDS[@p2points]
-
-      result = p1res + "-" + p2res
+      result = "#{POINTS_AS_WORDS[@p1points]}-#{POINTS_AS_WORDS[@p2points]}"
     end
 
     if (@p2points>@p1points and @p2points < 4)
