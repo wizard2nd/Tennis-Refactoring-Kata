@@ -113,14 +113,13 @@ class TennisGame2
     if player_one_leads?
       p1res = POINTS_AS_WORDS.fetch(@p1points, '')
       p2res = "Love"
-      result = "#{p1res}-Love"
+      result = "#{p1res}-#{p2res}"
     end
 
-    if (@p2points > 0 and @p1points==0)
+    if @p2points > 0 && @p1points ==0
       p2res = POINTS_AS_WORDS.fetch(@p2points, '')
-      
       p1res = "Love"
-      result = p1res + "-" + p2res
+      result = "#{p1res}-#{p2res}"
     end
     
     if (@p1points>@p2points and @p1points < 4)
