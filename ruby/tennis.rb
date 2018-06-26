@@ -123,17 +123,12 @@ class TennisGame2
     end
     
     if (@p1points>@p2points and @p1points < 4)
-      p1res = POINTS_AS_WORDS.fetch(@p1points, '')
+      p1res = POINTS_AS_WORDS[@p1points]
+      p2res = POINTS_AS_WORDS[@p2points]
 
-
-      if (@p2points==1)
-        p2res="Fifteen"
-      end
-      if (@p2points==2)
-        p2res="Thirty"
-      end
       result = p1res + "-" + p2res
     end
+
     if (@p2points>@p1points and @p2points < 4)
       if (@p2points==2)
         p2res="Thirty"
