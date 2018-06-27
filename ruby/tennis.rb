@@ -109,16 +109,17 @@ class TennisGame2
 
     return 'Deuce' if deuce?
 
-    p2res = ""
-    if player_one_leads?
-      p1res = POINTS_AS_WORDS.fetch(@p1points, '')
-      p2res = "Love"
+    p2res = "Love" if @p2points == 0
+    p1res = "Love" if @p1points == 0
+
+
+    if @p1points > 0
+      p1res = POINTS_AS_WORDS[@p1points]
       result = "#{p1res}-#{p2res}"
     end
 
-    if @p2points > 0 && @p1points ==0
-      p2res = POINTS_AS_WORDS.fetch(@p2points, '')
-      p1res = "Love"
+    if @p2points > 0
+      p2res = POINTS_AS_WORDS[@p2points]
       result = "#{p1res}-#{p2res}"
     end
 
