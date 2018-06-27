@@ -127,12 +127,8 @@ class TennisGame2
     end
 
     if (@p2points>@p1points and @p2points < 4)
-      if (@p2points==2)
-        p2res="Thirty"
-      end
-      if (@p2points==3)
-        p2res="Forty"
-      end
+      p2res = POINTS_AS_WORDS[@p2points]
+
       if (@p1points==1)
         p1res="Fifteen"
       end
