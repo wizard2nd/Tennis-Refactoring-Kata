@@ -121,15 +121,11 @@ class TennisGame2
       p1res = "Love"
       result = "#{p1res}-#{p2res}"
     end
-    
-    if (@p1points>@p2points and @p1points < 4)
-      result = "#{POINTS_AS_WORDS[@p1points]}-#{POINTS_AS_WORDS[@p2points]}"
-    end
 
-    if (@p2points>@p1points and @p2points < 4)
-      result = "#{POINTS_AS_WORDS[@p1points]}-#{POINTS_AS_WORDS[@p2points]}"
-    end
-    
+    result = "#{POINTS_AS_WORDS[@p1points]}-#{POINTS_AS_WORDS[@p2points]}" if (@p1points>@p2points and @p1points < 4)
+
+    result = "#{POINTS_AS_WORDS[@p1points]}-#{POINTS_AS_WORDS[@p2points]}" if (@p2points>@p1points and @p2points < 4)
+
     if (@p1points > @p2points and @p2points >= 3)
       result = "Advantage " + player1_name
     end
