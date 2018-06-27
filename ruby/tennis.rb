@@ -127,12 +127,9 @@ class TennisGame2
     end
 
     if (@p2points>@p1points and @p2points < 4)
-      p2res = POINTS_AS_WORDS[@p2points]
-      
-      p1res = POINTS_AS_WORDS[@p1points]
-
-      result = p1res + "-" + p2res
+      result = "#{POINTS_AS_WORDS[@p1points]}-#{POINTS_AS_WORDS[@p2points]}"
     end
+    
     if (@p1points > @p2points and @p2points >= 3)
       result = "Advantage " + player1_name
     end
