@@ -84,13 +84,15 @@ end
 
 class TennisGame2
 
-  attr_reader :player1_name, :player2_name
+  attr_reader :player1_name, :player2_name, :player1, :player2
 
   POINTS_AS_WORDS = { 0 => 'Love', 1 => 'Fifteen', 2 => 'Thirty', 3 => 'Forty' }
 
-  def initialize(player1Name, player2Name)
-    @player1_name = player1Name
-    @player2_name = player2Name
+  def initialize(player1_name, player2_name)
+    @player1 = Player.new(name: player1_name)
+    @player2 = Player.new(name: player2_name)
+    @player1_name = player1_name
+    @player2_name = player2_name
     @p1points = 0
     @p2points = 0
   end
