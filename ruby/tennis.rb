@@ -96,7 +96,15 @@ class TennisGame2
     @p1points = 0
     @p2points = 0
   end
-      
+
+  def p1points
+    @p1points
+  end
+
+  def p2points
+    @p2points
+  end
+
   def won_point(playerName)
     if playerName == player1_name
       p1Score()
@@ -107,38 +115,38 @@ class TennisGame2
 
   def score
 
-    return "#{POINTS_AS_WORDS[@p1points]}-All" if equal_score
+    return "#{POINTS_AS_WORDS[p1points]}-All" if equal_score
 
     return 'Deuce' if deuce?
 
-    p2res = "Love" if @p2points == 0
-    p1res = "Love" if @p1points == 0
+    p2res = "Love" if p2points == 0
+    p1res = "Love" if p1points == 0
 
 
-    if @p1points > 0
-      p1res = POINTS_AS_WORDS[@p1points]
+    if p1points > 0
+      p1res = POINTS_AS_WORDS[p1points]
       result = "#{p1res}-#{p2res}"
     end
 
-    if @p2points > 0
-      p2res = POINTS_AS_WORDS[@p2points]
+    if p2points > 0
+      p2res = POINTS_AS_WORDS[p2points]
       result = "#{p1res}-#{p2res}"
     end
 
-    result = "#{POINTS_AS_WORDS[@p1points]}-#{POINTS_AS_WORDS[@p2points]}" if (@p1points>@p2points and @p1points < 4)
+    result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}" if (p1points>p2points and p1points < 4)
 
-    result = "#{POINTS_AS_WORDS[@p1points]}-#{POINTS_AS_WORDS[@p2points]}" if (@p2points>@p1points and @p2points < 4)
+    result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}" if (p2points>p1points and p2points < 4)
 
-    if (@p1points > @p2points and @p2points >= 3)
+    if (p1points > p2points and p2points >= 3)
       result = "Advantage " + player1_name
     end
-    if (@p2points > @p1points and @p1points >= 3)
+    if (p2points > p1points and p1points >= 3)
       result = "Advantage " + player2_name
     end
-    if (@p1points>=4 and @p2points>=0 and (@p1points-@p2points)>=2)
+    if (p1points>=4 and p2points>=0 and (p1points-p2points)>=2)
       result = "Win for " + player1_name
     end
-    if (@p2points>=4 and @p1points>=0 and (@p2points-@p1points)>=2)
+    if (p2points>=4 and p1points>=0 and (p2points-p1points)>=2)
       result = "Win for " + player2_name
     end
     result
@@ -159,7 +167,7 @@ class TennisGame2
   def p1Score
     @p1points +=1
   end
-  
+
   def p2Score
     @p2points +=1
   end
