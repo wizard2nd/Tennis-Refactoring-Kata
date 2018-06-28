@@ -8,8 +8,8 @@ class Player
     @points = points
   end
 
-  def add(points:)
-    @points += points
+  def add_point
+    @points += 1
   end
 
   def advantage_against?(other_player)
@@ -58,8 +58,8 @@ class TennisGame1
   end
 
   def won_point(player_name)
-    player1.add points: 1 if player1.name.eql? player_name
-    player2.add points: 1 if player2.name.eql? player_name
+    player1.add_point if player1.name.eql? player_name
+    player2.add_point if player2.name.eql? player_name
   end
 
   def score
