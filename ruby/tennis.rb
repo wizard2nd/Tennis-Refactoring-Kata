@@ -138,18 +138,11 @@ class TennisGame2
 
     result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}" if (p2points>p1points and p2points < 4)
 
-    if player1.advantage_against?(player2)
-      result = player1.advantage
-    end
-    if player2.advantage_against?(player1)
-      result = player2.advantage
-    end
-    if player1.wins_against?(player2)
-      result = player1.wins
-    end
-    if player2.wins_against?(player1)
-      result = player2.wins
-    end
+    result = player1.advantage if player1.advantage_against?(player2)
+    result = player2.advantage if player2.advantage_against?(player1)
+    result = player1.wins if player1.wins_against?(player2)
+    result = player2.wins if player2.wins_against?(player1)
+    
     result
   end
 
