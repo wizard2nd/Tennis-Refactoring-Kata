@@ -98,18 +98,19 @@ class TennisGame2
   end
 
   def p1points
-    @p1points
+    player1.points
+    # @p1points
   end
 
   def p2points
-    @p2points
+    player2.points
   end
 
   def won_point(playerName)
     if playerName == player1_name
-      p1Score()
+      player1.add_point
     else
-      p2Score()
+      player2.add_point
     end
   end
 
@@ -153,15 +154,15 @@ class TennisGame2
   end
 
   def player_one_leads?
-    @p1points > 0 && @p2points == 0
+    p1points > 0 && p2points == 0
   end
 
   def deuce?
-    @p1points == @p2points && @p1points > 2
+    p1points == p2points && p1points > 2
   end
 
   def equal_score
-    @p1points == @p2points && @p1points < 3
+    p1points == p2points && p1points < 3
   end
 
   def p1Score
