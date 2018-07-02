@@ -118,9 +118,9 @@ class TennisGame2
 
     return 'Deuce' if deuce?
 
-    result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}" if player1.lead_over(player2) > 0
-
-    result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}" if player2.lead_over(player1) > 0
+    if player1.lead_over(player2) > 0 || player2.lead_over(player1) > 0
+      result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}"
+    end
 
     result = player1.advantage if player1.advantage_against?(player2)
     result = player2.advantage if player2.advantage_against?(player1)
