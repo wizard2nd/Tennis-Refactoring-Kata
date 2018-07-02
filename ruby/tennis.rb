@@ -32,8 +32,6 @@ class Player
     "Win for #{name}"
   end
 
-  private
-
   def lead_over(other_player)
     points - other_player.points
   end
@@ -125,25 +123,29 @@ class TennisGame2
 
 
     if p1points > 0
-      p1res = POINTS_AS_WORDS[p1points]
+      p1res = points_for player1
       result = "#{p1res}-#{p2res}"
     end
 
     if p2points > 0
-      p2res = POINTS_AS_WORDS[p2points]
+      p2res = points_for player2
       result = "#{p1res}-#{p2res}"
     end
 
-    result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}" if (p1points>p2points and p1points < 4)
+    result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}" if (p1points>p2points)
 
-    result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}" if (p2points>p1points and p2points < 4)
+    result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}" if (p2points>p1points)
 
     result = player1.advantage if player1.advantage_against?(player2)
     result = player2.advantage if player2.advantage_against?(player1)
     result = player1.wins if player1.wins_against?(player2)
     result = player2.wins if player2.wins_against?(player1)
-    
+
     result
+  end
+
+  def points_for(player)
+    POINTS_AS_WORDS[player.points]
   end
 
   def player_one_leads?
