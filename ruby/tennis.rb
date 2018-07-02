@@ -118,20 +118,6 @@ class TennisGame2
 
     return 'Deuce' if deuce?
 
-    p2res = "Love" if p2points == 0
-    p1res = "Love" if p1points == 0
-
-
-    if p1points > 0
-      p1res = points_for player1
-      result = "#{p1res}-#{p2res}"
-    end
-
-    if p2points > 0
-      p2res = points_for player2
-      result = "#{p1res}-#{p2res}"
-    end
-
     result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}" if (p1points>p2points)
 
     result = "#{POINTS_AS_WORDS[p1points]}-#{POINTS_AS_WORDS[p2points]}" if (p2points>p1points)
