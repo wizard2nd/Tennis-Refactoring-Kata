@@ -91,14 +91,6 @@ class TennisGame2
     @player2 = Player.new(name: player2_name)
   end
 
-  def p1points
-    player1.points
-  end
-
-  def p2points
-    player2.points
-  end
-
   def won_point(playerName)
     if player1.name == playerName
       player1.add_point
@@ -123,11 +115,11 @@ class TennisGame2
   end
 
   def deuce?
-    p1points == p2points && p1points > 2
+    player1.points == player2.points && player1.points > 2
   end
 
   def equal_score
-    p1points == p2points && p1points < 3
+    player1.points == player2.points && player1.points < 3
   end
 end
 
