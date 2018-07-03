@@ -113,24 +113,15 @@ class TennisGame2
   end
 
   def score
-
-    return "#{points_for player1}-All" if equal_score
     return 'Deuce' if deuce?
+    return "#{points_for player1}-All" if equal_score
+    return player1.advantage if player1.advantage_against?(player2)
+    return player2.advantage if player2.advantage_against?(player1)
+    return player1.wins if player1.wins_against?(player2)
+    return player2.wins if player2.wins_against?(player1)
 
-    result = "#{points_for player1}-#{points_for player2}" if any_player_leads
-
-    result = player1.advantage if player1.advantage_against?(player2)
-    result = player2.advantage if player2.advantage_against?(player1)
-    result = player1.wins if player1.wins_against?(player2)
-    result = player2.wins if player2.wins_against?(player1)
-
-    result
+    "#{points_for player1}-#{points_for player2}"
   end
-
-  def any_player_leads
-    player1.lead_over(player2) > 0 || player2.lead_over(player1) > 0
-  end
-
 
   def points_for(player)
     POINTS_AS_WORDS[player.points]
