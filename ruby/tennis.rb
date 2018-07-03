@@ -138,14 +138,6 @@ class TennisGame2
   def equal_score
     p1points == p2points && p1points < 3
   end
-
-  def p1Score
-    @p1points +=1
-  end
-
-  def p2Score
-    @p2points +=1
-  end
 end
 
 class TennisGame3
