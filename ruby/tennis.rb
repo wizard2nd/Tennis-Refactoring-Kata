@@ -82,22 +82,17 @@ end
 
 class TennisGame2
 
-  attr_reader :player1_name, :player2_name, :player1, :player2
+  attr_reader :player1, :player2
 
   POINTS_AS_WORDS = { 0 => 'Love', 1 => 'Fifteen', 2 => 'Thirty', 3 => 'Forty' }
 
   def initialize(player1_name, player2_name)
     @player1 = Player.new(name: player1_name)
     @player2 = Player.new(name: player2_name)
-    @player1_name = player1_name
-    @player2_name = player2_name
-    @p1points = 0
-    @p2points = 0
   end
 
   def p1points
     player1.points
-    # @p1points
   end
 
   def p2points
@@ -105,7 +100,7 @@ class TennisGame2
   end
 
   def won_point(playerName)
-    if playerName == player1_name
+    if player1.name == playerName
       player1.add_point
     else
       player2.add_point
@@ -125,10 +120,6 @@ class TennisGame2
 
   def points_for(player)
     POINTS_AS_WORDS[player.points]
-  end
-
-  def player_one_leads?
-    p1points > 0 && p2points == 0
   end
 
   def deuce?
