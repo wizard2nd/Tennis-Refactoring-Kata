@@ -140,7 +140,7 @@ class TennisGame3
   end
 
   def score
-    if (@player1_points < 4 and @player2_points < 4) and (@player1_points + @player2_points < 6) # one or other player leads
+    if any_player_leads? # one or other player leads
       p = ["Love", "Fifteen", "Thirty", "Forty"]
       s = p[@player1_points]
       @player1_points == @player2_points ? s + "-All" : s + "-" + p[@player2_points] # draw or leading
@@ -153,4 +153,10 @@ class TennisGame3
       end
     end
   end
+
+  def any_player_leads?
+    (@player1_points < 4 && @player2_points < 4) && (@player1_points + @player2_points < 6)
+  end
+
+
 end
