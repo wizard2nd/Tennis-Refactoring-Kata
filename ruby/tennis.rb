@@ -124,6 +124,9 @@ class TennisGame2
 end
 
 class TennisGame3
+
+  POINTS_TO_WORDS = %w(Love Fifteen Thirty Forty).freeze
+
   def initialize(player1Name, player2Name)
     @player1_name = player1Name
     @player2_name = player2Name
@@ -141,9 +144,8 @@ class TennisGame3
 
   def score
     if any_player_leads? # one or other player leads
-      p = ["Love", "Fifteen", "Thirty", "Forty"]
-      s = p[@player1_points]
-      @player1_points == @player2_points ? s + "-All" : s + "-" + p[@player2_points] # draw or leading
+      s = POINTS_TO_WORDS[@player1_points]
+      @player1_points == @player2_points ? s + "-All" : s + "-" + POINTS_TO_WORDS[@player2_points] # draw or leading
     else
       if (@player1_points == @player2_points)
         "Deuce"
