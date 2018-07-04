@@ -125,30 +125,30 @@ end
 
 class TennisGame3
   def initialize(player1Name, player2Name)
-    @p1N = player1Name
-    @p2N = player2Name
+    @player1_name = player1Name
+    @player2_name = player2Name
     @p1 = 0
     @p2 = 0
   end
-      
+
   def won_point(n)
-    if n == @p1N
+    if n == @player1_name
         @p1 += 1
     else
         @p2 += 1
     end
   end
-  
+
   def score
-    if (@p1 < 4 and @p2 < 4) and (@p1 + @p2 < 6)
+    if (@p1 < 4 and @p2 < 4) and (@p1 + @p2 < 6) # one or other player leads
       p = ["Love", "Fifteen", "Thirty", "Forty"]
       s = p[@p1]
-      @p1 == @p2 ? s + "-All" : s + "-" + p[@p2]
+      @p1 == @p2 ? s + "-All" : s + "-" + p[@p2] # draw or leading
     else
       if (@p1 == @p2)
         "Deuce"
       else
-        s = @p1 > @p2 ? @p1N : @p2N
+        s = @p1 > @p2 ? @player1_name : @player2_name
         (@p1-@p2)*(@p1-@p2) == 1 ? "Advantage " + s : "Win for " + s
       end
     end
