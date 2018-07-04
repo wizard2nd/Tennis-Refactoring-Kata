@@ -146,12 +146,11 @@ class TennisGame3
     if any_player_leads? # one or other player leads
       score = POINTS_TO_WORDS[@player1_points]
       @player1_points == @player2_points ? score + "-All" : score + "-" + POINTS_TO_WORDS[@player2_points] # draw or leading
+    elsif equal_points?
+      "Deuce"
     else
-      if equal_points?
-        "Deuce"
-      else
-        score = @player1_points > @player2_points ? @player1_name : @player2_name
-        (@player1_points-@player2_points)*(@player1_points-@player2_points) == 1 ? "Advantage " + score : "Win for " + score      end
+      score = @player1_points > @player2_points ? @player1_name : @player2_name
+      (@player1_points-@player2_points)*(@player1_points-@player2_points) == 1 ? "Advantage " + score : "Win for " + score
     end
   end
 
