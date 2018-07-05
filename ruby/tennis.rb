@@ -143,10 +143,15 @@ class TennisGame3
   end
 
   def score
-    if any_player_leads? # one or other player leads
-      score = POINTS_TO_WORDS[@player1_points]
-      @player1_points == @player2_points ? score + "-All" : score + "-" + POINTS_TO_WORDS[@player2_points] # draw or leading
-    elsif equal_points?
+    if lead_or_equal_points? # one or other player leads
+
+      if equal_points?
+        POINTS_TO_WORDS[@player1_points] + "-All"
+      else
+        "#{POINTS_TO_WORDS[@player1_points]}-#{POINTS_TO_WORDS[@player2_points]}" # draw or leading
+      end
+
+    elsif @player1_points == @player2_points
       "Deuce"
     else
       score = @player1_points > @player2_points ? @player1_name : @player2_name
@@ -158,8 +163,12 @@ class TennisGame3
     @player1_points == @player2_points
   end
 
-  def any_player_leads?
-    (@player1_points < 4 && @player2_points < 4) && (@player1_points + @player2_points < 6)
+  def lead_or_equal_points?
+    (@player1_points <= 3 && @player2_points <= 3) && (@player1_points + @player2_points < 6)
+  end
+
+  def deuce?
+    @player1_points == @player2_points && @player1_points > 3
   end
 
 
