@@ -151,8 +151,12 @@ class TennisGame3
       "Deuce"
     else
       score = @player1_points > @player2_points ? @player1_name : @player2_name
-      (@player1_points-@player2_points)*(@player1_points-@player2_points) == 1 ? "Advantage " + score : "Win for " + score
+      advantage? ? "Advantage " + score : "Win for " + score
     end
+  end
+
+  def advantage?
+    (@player1_points - @player2_points) * (@player1_points - @player2_points) == 1
   end
 
   def equal_points?
