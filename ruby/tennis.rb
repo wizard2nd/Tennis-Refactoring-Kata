@@ -151,7 +151,11 @@ class TennisGame3
       "Deuce"
     else
       score = @player1_points > @player2_points ? @player1_name : @player2_name
-      advantage? ? "Advantage " + score : "Win for " + score
+      if advantage?
+        "Advantage " + score
+      else
+        "Win for " + score
+      end
     end
   end
 
