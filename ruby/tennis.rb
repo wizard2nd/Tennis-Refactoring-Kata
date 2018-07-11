@@ -150,12 +150,8 @@ class TennisGame3
     elsif @player1_points == @player2_points
       "Deuce"
     else
-      score = @player1_points > @player2_points ? @player1_name : @player2_name
-      if advantage?
-        "Advantage #{score}"
-      else
-        "Win for #{score}"
-      end
+      return "Advantage #{score_points}" if advantage?
+      "Win for #{score_points}"
     end
   end
 
@@ -173,6 +169,12 @@ class TennisGame3
 
   def deuce?
     @player1_points == @player2_points && @player1_points > 3
+  end
+
+  private
+
+  def score_points
+    @player1_points > @player2_points ? @player1_name : @player2_name
   end
 
 
