@@ -149,9 +149,9 @@ class TennisGame3
 
   def score
     return 'Deuce' if deuce?
-    return POINTS_TO_WORDS[player1.points] + "-All" if equal_points?
+    return "#{points_for(player1)}-All" if equal_points?
     return "Advantage #{score_points}" if advantage?
-    return "#{POINTS_TO_WORDS[player1.points]}-#{POINTS_TO_WORDS[player2.points]}" if lead_or_equal_points?
+    return "#{points_for(player1)}-#{points_for(player2)}" if lead_or_equal_points?
     return "Win for #{score_points}"
   end
 
@@ -175,5 +175,9 @@ class TennisGame3
 
   def score_points
     player1.points > player2.points ? @player1_name : @player2_name
+  end
+
+  def points_for(player)
+    POINTS_TO_WORDS[player.points]
   end
 end
