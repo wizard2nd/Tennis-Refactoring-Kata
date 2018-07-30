@@ -142,10 +142,8 @@ class TennisGame3
   def won_point(n)
     if n == @player1_name
       player1.add_point
-      @player1_points += 1
     else
       player2.add_point
-      @player2_points += 1
     end
   end
 
