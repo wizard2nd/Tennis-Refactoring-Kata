@@ -151,6 +151,8 @@ class TennisGame3
     "#{points_for(player1)}-#{points_for(player2)}"
   end
 
+  private
+
   def advantage?
     player1.points >= 3 && player2.points >= 3 && lead_by_one?
   end
@@ -166,8 +168,6 @@ class TennisGame3
   def win?
     (player1.points > 3 || player2.points > 3) && lead_by_one_or_more?
   end
-
-  private
 
   def lead_by_one_or_more?
     (player1.points - player2.points).abs > 1
