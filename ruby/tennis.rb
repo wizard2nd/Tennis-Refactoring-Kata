@@ -140,7 +140,7 @@ class TennisGame3
   end
 
   def won_point(n)
-    if n == @player1_name
+    if n == player1.name
       player1.add_point
     else
       player2.add_point
@@ -174,7 +174,7 @@ class TennisGame3
   private
 
   def score_points
-    player1.points > player2.points ? @player1_name : @player2_name
+    player1.points > player2.points ? player1.name : player2.name
   end
 
   def points_for(player)
