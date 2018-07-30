@@ -130,11 +130,6 @@ class TennisGame3
   POINTS_TO_WORDS = %w(Love Fifteen Thirty Forty).freeze
 
   def initialize(player1_name, player2_name)
-    @player1_name = player1_name
-    @player2_name = player2_name
-    @player1_points = 0
-    @player2_points = 0
-
     @player1 = Player.new(name: player1_name)
     @player2 = Player.new(name: player2_name)
   end
