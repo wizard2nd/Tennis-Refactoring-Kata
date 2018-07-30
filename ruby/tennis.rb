@@ -164,10 +164,14 @@ class TennisGame3
   end
 
   def win?
-    (player1.points > 3 || player2.points > 3) && (player1.points - player2.points).abs > 1
+    (player1.points > 3 || player2.points > 3) && lead_by_one_or_more?
   end
 
   private
+
+  def lead_by_one_or_more?
+    (player1.points - player2.points).abs > 1
+  end
 
   def lead_by_one?
     (player1.points - player2.points).abs == 1
