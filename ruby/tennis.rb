@@ -134,8 +134,8 @@ class TennisGame3
     @player2 = Player.new(name: player2_name)
   end
 
-  def won_point(n)
-    if n == player1.name
+  def won_point(player_name)
+    if player_name == player1.name
       player1.add_point
     else
       player2.add_point
