@@ -147,14 +147,6 @@ class TennisGame3
     end
   end
 
-  def player1_points
-    player1.points
-  end
-
-  def player2_points
-    player2.points
-  end
-
   def score
     return 'Deuce' if deuce?
     return POINTS_TO_WORDS[player1.points] + "-All" if equal_points?
