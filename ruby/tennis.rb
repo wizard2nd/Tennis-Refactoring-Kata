@@ -125,6 +125,8 @@ end
 
 class TennisGame3
 
+  attr_reader :player1, :player2
+
   POINTS_TO_WORDS = %w(Love Fifteen Thirty Forty).freeze
 
   def initialize(player1_name, player2_name)
@@ -132,43 +134,56 @@ class TennisGame3
     @player2_name = player2_name
     @player1_points = 0
     @player2_points = 0
+
+    @player1 = Player.new(name: player1_name)
+    @player2 = Player.new(name: player2_name)
   end
 
   def won_point(n)
     if n == @player1_name
-        @player1_points += 1
+      player1.add_point
+      @player1_points += 1
     else
-        @player2_points += 1
+      player2.add_point
+      @player2_points += 1
     end
+  end
+
+  def player1_points
+    player1.points
+  end
+
+  def player2_points
+    player2.points
   end
 
   def score
     return 'Deuce' if deuce?
-    return POINTS_TO_WORDS[@player1_points] + "-All" if equal_points?
+    return POINTS_TO_WORDS[player1_points] + "-All" if equal_points?
     return "Advantage #{score_points}" if advantage?
-    return "#{POINTS_TO_WORDS[@player1_points]}-#{POINTS_TO_WORDS[@player2_points]}" if lead_or_equal_points?
+    return "#{POINTS_TO_WORDS[player1_points]}-#{POINTS_TO_WORDS[player2_points]}" if lead_or_equal_points?
     return "Win for #{score_points}"
   end
 
   def advantage?
-    @player1_points >= 3 && @player2_points >= 3 && (@player1_points - @player2_points).abs == 1
+    player1_points >= 3 && player2_points >= 3 && (player1_points - player2_points).abs == 1
   end
 
   def equal_points?
-    @player1_points == @player2_points
+    player1_points == player2_points
   end
 
   def lead_or_equal_points?
-    (@player1_points <= 3 && @player2_points <= 3) && (@player1_points + @player2_points < 6)
+    (player1_points <= 3 && player2_points <= 3) && (player1_points + player2_points < 6)
   end
 
   def deuce?
-    @player1_points == @player2_points && @player1_points >= 3
+    player1_points == player2_points && player1_points >= 3
   end
 
   private
 
   def score_points
-    @player1_points > @player2_points ? @player1_name : @player2_name
+    player1_points > player2_points ? @player1_name : @player2_name
   end
 end
