@@ -157,31 +157,31 @@ class TennisGame3
 
   def score
     return 'Deuce' if deuce?
-    return POINTS_TO_WORDS[player1_points] + "-All" if equal_points?
+    return POINTS_TO_WORDS[player1.points] + "-All" if equal_points?
     return "Advantage #{score_points}" if advantage?
-    return "#{POINTS_TO_WORDS[player1_points]}-#{POINTS_TO_WORDS[player2_points]}" if lead_or_equal_points?
+    return "#{POINTS_TO_WORDS[player1.points]}-#{POINTS_TO_WORDS[player2.points]}" if lead_or_equal_points?
     return "Win for #{score_points}"
   end
 
   def advantage?
-    player1_points >= 3 && player2_points >= 3 && (player1_points - player2_points).abs == 1
+    player1.points >= 3 && player2.points >= 3 && (player1.points - player2.points).abs == 1
   end
 
   def equal_points?
-    player1_points == player2_points
+    player1.points == player2.points
   end
 
   def lead_or_equal_points?
-    (player1_points <= 3 && player2_points <= 3) && (player1_points + player2_points < 6)
+    (player1.points <= 3 && player2.points <= 3) && (player1.points + player2.points < 6)
   end
 
   def deuce?
-    player1_points == player2_points && player1_points >= 3
+    player1.points == player2.points && player1.points >= 3
   end
 
   private
 
   def score_points
-    player1_points > player2_points ? @player1_name : @player2_name
+    player1.points > player2.points ? @player1_name : @player2_name
   end
 end
