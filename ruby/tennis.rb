@@ -148,7 +148,8 @@ class TennisGame3
     return "Advantage #{player_name}" if advantage?
     return "#{points_for(player1)}-#{points_for(player2)}" if lead_or_equal_points?
 
-    "Win for #{player_name}"
+    return "Win for #{player_name}" if win?
+
   end
 
   def advantage?
@@ -165,6 +166,10 @@ class TennisGame3
 
   def deuce?
     player1.points == player2.points && player1.points >= 3
+  end
+
+  def win?
+    (player1.points > 3 || player2.points > 3) && (player1.points - player2.points).abs > 1
   end
 
   private
