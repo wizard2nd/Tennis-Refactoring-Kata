@@ -127,7 +127,7 @@ class TennisGame3
 
   attr_reader :player1, :player2
 
-  POINTS_TO_WORDS = %w(Love Fifteen Thirty Forty).freeze
+  POINTS_TO_WORDS = %w[Love Fifteen Thirty Forty].freeze
 
   def initialize(player1_name, player2_name)
     @player1 = Player.new(name: player1_name)
